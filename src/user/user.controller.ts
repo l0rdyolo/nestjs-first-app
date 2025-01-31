@@ -1,9 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
+import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
+    constructor(private readonly userService: UserService) {
+        
+    }
+
     @Get()
     activeUsers(): string[] {
-        return ['User1', 'User2', 'User3'];
+        return this.userService.activeUsers();
     }
 }
